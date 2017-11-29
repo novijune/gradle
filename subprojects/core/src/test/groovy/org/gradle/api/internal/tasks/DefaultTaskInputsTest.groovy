@@ -183,7 +183,7 @@ class DefaultTaskInputsTest extends Specification {
         when: inputs.files(["s1", "s2"]).skipWhenEmpty()
         then:
         inputs.hasSourceFiles
-        inputs.files.files.toList() == [new File("a"), new File("b"), new File("s1"), new File("s2")]
+        inputs.files.files == [new File("a"), new File("b"), new File("s1"), new File("s2")] as Set
         inputs.sourceFiles.files.toList() == [new File("s1"), new File("s2")]
         inputs.fileProperties*.propertyName == ['$1', 'prop']
         inputs.fileProperties*.propertyFiles*.toList() == [[new File("s1"), new File("s2")], [new File("a"), new File("b")]]
